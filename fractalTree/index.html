@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>fractalTree</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <canvas id="myCanvas"></canvas>
+        <div id="attribute_editor_container">
+            <div class="attribute_container">
+                <p class="attribute_description">line length:</p>
+                <input type="number" id="line_length"/>
+            </div>
+            <div class="attribute_container">
+                <p class="attribute_description">branches: </p>
+                <input type="number" id="branches"/>
+            </div>
+            <div class="attribute_container">
+                <p class="attribute_description">tree length: </p>
+                <input type="number" id="tree_length"/>
+            </div>
+        </div>
+        
+        <script src="code.js" async defer></script>
+    </body>
+</html>

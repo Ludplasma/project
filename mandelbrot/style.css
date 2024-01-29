@@ -1,0 +1,32 @@
+*{
+    margin:0px;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+}
+#main{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.option{
+    display: flex;
+    margin-bottom: 10px;
+}
+#myCanvas2{
+    visibility:visible;
+    position: absolute;
+    top:0;
+    left:0;
+}
+#c_custom{
+    display: flex;
+    flex-direction: column;
+    background-color: aqua;
+}
+.c_option{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+}

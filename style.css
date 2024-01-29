@@ -1,0 +1,44 @@
+*{
+    margin: 0px;
+    box-sizing: border-box;
+}
+body{
+    display: block;
+    background-color: aqua;
+}
+#main{
+    display: block;
+}
+.project{
+    width: 80%;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    background-color: rgb(67, 67, 250);
+    font-size: 150%;
+    border: solid 2px yellow;
+}
+.project:hover{
+    background-color: rgb(105, 105, 250);
+}
+.project:active{
+    background-color: rgb(43, 43, 243);
+}
+.project-div{
+    display: flex;
+}
+.instructions{
+    width: 20%;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    background-color: rgb(67, 229, 250);
+    font-size: 150%;
+    border: solid 2px yellow;
+}
+.instructions:hover{
+    background-color: rgb(138, 240, 253);
+}
+.instructions:active{
+    background-color: rgb(25, 228, 255);
+}

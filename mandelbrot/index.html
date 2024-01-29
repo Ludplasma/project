@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>ultimate mandelbrot veiwer</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <canvas id="myCanvas"></canvas>
+        <canvas id="myCanvas2"></canvas>
+        <div id="main">
+            <div class="option">
+                <p>iterations: </p>
+                <input placeholder="iterations" type="number" id="iterations"/>
+            </div>
+            <div class="option">
+                <p>workers: </p>
+                <input placeholder="workers" type="number" id="workers"/>
+            </div>
+            <div class="option">
+                <p>exponent: </p>
+                <input placeholder="real number" type="number" id="realNum"/>
+                <p>+</p>
+                <input placeholder="imaginary number" type="number" id="imNum"/>
+                <p>i</p>
+            </div>
+            <div class="option" id="c_custom">
+                <div class="c_option">
+                    <p>clicked value: </p>
+                    <p id="showCA">0</p>
+                    <p>+</p>
+                    <p id="showCB">0</p>
+                    <p>i</p>
+                </div>
+                <div class="c_option">
+                    <button id="addC">add value to c</button>
+                </div>
+                <div class="c_option">
+                    <p>c: </p>
+                    <input placeholder="real number" type="number" id="creal"/>
+                    <p>+</p>
+                    <input placeholder="imaginary number" type="number" id="cim"/>
+                    <p>i</p>
+                </div>
+                <div class="c_option">
+                    <select id="MJselect">
+                        <option>mandelbrot</option>
+                        <option>julia set</option>
+                    </select>
+                </div>
+            </div>
+            <div class="option">
+                <p>color scheme:</p>
+                <select id="colorScheme">
+                    <option>hsl</option>
+                    <option>cold</option>
+                    <option>warm to cold</option>
+                    <option>white middle rainbow</option>
+                </select>
+            </div>
+            <div class="option">
+                <button id="reload">reload</button>
+                <button id="reload_frame">reload</button>
+                <p id="drawDone">done</p>
+            </div>
+            <div class="option">
+                <select id="zoom_setting">
+                    <option>zoom in</option>
+                    <option>zoom out</option>
+                </select>
+            </div>
+        </div>
+        <script src="code.js" async defer></script>
+    </body>
+</html>

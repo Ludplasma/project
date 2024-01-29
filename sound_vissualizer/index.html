@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="container">
+            <canvas id="myCanvas1"></canvas>
+            <p id="name" class="setting"></p>
+            <input type="file" id="file-input" class="setting" multiple accept="audio/*"/>
+            <audio id="audio1" class="setting" controls></audio>
+            <div id="select-song">
+                <button id="but1" class="button-style"><</button>
+                <button id="but2" class="button-style">></button>
+            </div>
+            <div id="song-search" class="setting">
+                <input id="find-input" placeholder="song keywords:"/>
+                <button id="find">search</button>
+            </div>
+            <div id="select-modes" class="setting"> 
+                <select id="select-songs">
+
+                </select>
+                <button id="setting-button">settings</button>
+            </div>
+            <div id="settings">
+                <div class="add-flex">
+                    <select id="input-mode">
+                        <option>audio files</option>
+                        <option>microphone</option>
+                    </select>
+                    <select id="vissualizer-mode">
+                        <option>vissualizer 1</option>
+                        <option>vissualizer 2</option>
+                        <option>vissualizer 3</option>
+                        <option>vissualizer 4</option>
+                        <option>vissualizer 5</option>
+                    </select>
+                </div>
+                <div id="color-range-div">
+                    <input type="number" placeholder="0-360" id="color-range1"/>
+                    <input type="number" placeholder="0-360" id="color-range2"/>
+                </div>
+                <div class="scale-div">
+                    <input type="number" placeholder="scale" id="scale-range"/>
+                </div>
+            </div>
+        </div>
+        <script src="code.js" async defer></script>
+    </body>
+</html>

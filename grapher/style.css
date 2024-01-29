@@ -1,0 +1,26 @@
+body {
+    background-color: whitesmoke;
+}
+
+#graph {
+    border: solid black 5px;
+}
+
+.graph-div {
+    width: 50%;
+}
+.parent-expression-div{
+    width: 50%;
+}
+.expression-div {
+    width: 100%;
+}
+#expression {
+    width: 50%;
+}
+.main {
+    width: 100%;
+    justify-content: center;
+    width: auto;
+    display: flex;
+}

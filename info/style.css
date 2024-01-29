@@ -1,0 +1,14 @@
+*{
+    margin:0px;
+    box-sizing: border-box;
+}
+body{
+    background-color: rgb(219, 219, 219);
+    padding:10%;
+}
+#main{
+    width: 100%;
+}
+p{
+    color:rgb(27, 27, 27);
+}

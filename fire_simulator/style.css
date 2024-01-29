@@ -1,0 +1,30 @@
+*{
+    box-sizing: border-box;
+    margin:0px;
+}
+body{
+    background-color: aqua;
+}
+#myCanvas{
+    position: absolute;
+    top:30px;
+    left: 0;
+}
+#range-div{
+    position: absolute;
+    top:0;
+    left: 0;
+}
+#clear{
+    padding: 4px;
+    font-weight: bold;
+    background-color: rgb(72, 255, 0);
+    border: yellow 2px solid;
+    border-radius: 5px;
+}
+#clear:hover{
+    background-color: rgb(159, 250, 122);
+}
+#clear:active{
+    background-color: rgb(253, 0, 198);
+}

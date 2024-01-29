@@ -1,0 +1,10 @@
+*{
+    margin: 0px;
+    box-sizing: border-box;
+}
+#space{
+    position: absolute;
+    top:0;
+    left:0;
+}
+

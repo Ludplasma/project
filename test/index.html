@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moving Particles</title>
+    <style>
+        body, html {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        canvas {
+            display: block;
+            background-color: black; /* Set the canvas background to black */
+        }
+    </style>
+</head>
+<body>
+    <canvas id="atomsCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('atomsCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set canvas dimensions to full screen
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Array to store atom positions
+        const atoms = [];
+
+        // Array to store particles
+        const particles = [];
+
+        // Maximum number of particles
+        const maxParticles = 300;
+
+        // Function to generate a random number within a range
+        function getRandom(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        // Function to create an atom
+        function createAtom() {
+            return {
+                x: getRandom(0, canvas.width),
+                y: getRandom(0, canvas.height),
+                radius: 10,  // Set radius to 10
+                color: 'rgba(0, 0, 255, 1)',  // Set color to blue
+                velocity: {
+                    x: getRandom(-2, 2),
+                    y: getRandom(-2, 2),
+                }
+            };
+        }
+
+        // Create initial atoms
+        for (let i = 0; i < 50; i++) {
+            atoms.push(createAtom());
+        }
+
+        // Function to create a particle
+        function createParticle(x, y, color) {
+            particles.push({
+                x,
+                y,
+                radius: 2,
+                color,
+                alpha: 1, // Initial opacity
+                velocity: {
+                    x: getRandom(-1, 1),
+                    y: getRandom(-1, 1),
+                }
+            });
+
+            // Remove oldest particles if the number exceeds the maximum
+            if (particles.length > maxParticles) {
+                particles.shift();
+            }
+        }
+
+        // Function to calculate distance between two points
+        function calculateDistance(point1, point2) {
+            return Math.sqrt((point1.x - point2.x)**2 + (point1.y - point2.y)**2);
+        }
+
+        // Function to update and draw atoms
+        function updateAtoms() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            atoms.forEach(atom => {
+                // Save the current position for particles
+                createParticle(atom.x, atom.y, atom.color);
+
+                atom.x += atom.velocity.x;
+                atom.y += atom.velocity.y;
+
+                // Bounce off the walls
+                if (atom.x - atom.radius < 0 || atom.x + atom.radius > canvas.width) {
+                    atom.velocity.x = -atom.velocity.x;
+                }
+
+                if (atom.y - atom.radius < 0 || atom.y + atom.radius > canvas.height) {
+                    atom.velocity.y = -atom.velocity.y;
+                }
+
+                // Check for collisions with other atoms
+                atoms.forEach(otherAtom => {
+                    if (atom !== otherAtom) {
+                        const distance = calculateDistance(atom, otherAtom);
+                        const minDistance = atom.radius + otherAtom.radius;
+
+                        if (distance < minDistance) {
+                            // Calculate the overlap distance
+                            const overlap = minDistance - distance;
+
+                            // Move the atoms away from each other
+                            const angle = Math.atan2(atom.y - otherAtom.y, atom.x - otherAtom.x);
+                            const moveX = overlap * Math.cos(angle) / 2;
+                            const moveY = overlap * Math.sin(angle) / 2;
+
+                            atom.x += moveX;
+                            atom.y += moveY;
+                            otherAtom.x -= moveX;
+                            otherAtom.y -= moveY;
+
+                            // Swap velocities to simulate a bounce
+                            const tempVelocity = { x: atom.velocity.x, y: atom.velocity.y };
+                            atom.velocity = { x: otherAtom.velocity.x, y: otherAtom.velocity.y };
+                            otherAtom.velocity = { x: tempVelocity.x, y: tempVelocity.y };
+                        }
+                    }
+                });
+
+                // Draw the atom
+                ctx.beginPath();
+                ctx.arc(atom.x, atom.y, atom.radius, 0, Math.PI * 2);
+                ctx.fillStyle = atom.color;
+                ctx.shadowColor = atom.color;
+                ctx.shadowBlur = 10;  // Set shadow blur for the glowing effect
+                ctx.fill();
+                ctx.closePath();
+            });
+
+            // Update and draw particles
+            particles.forEach((particle, index) => {
+                particle.x += particle.velocity.x;
+                particle.y += particle.velocity.y;
+                particle.alpha -= 0.02; // Reduce alpha for fade-out effect
+
+                // Remove faded-out particles
+                if (particle.alpha <= 0) {
+                    particles.splice(index, 1);
+                }
+
+                ctx.beginPath();
+                ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${particle.color}, ${particle.alpha})`;
+                ctx.fill();
+                ctx.closePath();
+            });
+
+            requestAnimationFrame(updateAtoms);
+        }
+
+        // Start the animation
+        updateAtoms();
+    </script>
+</body>
+</html>
